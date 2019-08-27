@@ -1,0 +1,39 @@
+{
+  "name": "interview--design-implement-1",
+  "version": "1.0.0",
+  "description": "Code for an interview",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && npm run build:css",
+    "build:css": "node-sass --output-style expanded --source-map-embed src/style.scss --output dist ",
+    "build:twig": "node ./scripts/build-twig.js",
+    "clean": "rm -rf dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "browser-sync start --server dist --watch dist --no-open --logLevel debug",
+    "start": "npm run build && run-p watch:* serve",
+    "watch:css": "npm run build:css -- --watch --recursive",
+    "watch:twig": "nodemon --watch src/ --ext 'js,json,twig' --exec 'npm run build:twig' "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basaltinc/interview--design-implement-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/basaltinc/interview--design-implement-1/issues"
+  },
+  "homepage": "https://github.com/basaltinc/interview--design-implement-1#readme",
+  "dependencies": {
+    "@basalt/twig-renderer": "^0.12.0",
+    "browser-sync": "^2.26.4",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5"
+  },
+  "devDependencies": {
+    "@basalt/eslint-config-base": "^0.4.0",
+    "fs-extra": "^7.0.1",
+    "nodemon": "^1.19.0"
+  }
+}
